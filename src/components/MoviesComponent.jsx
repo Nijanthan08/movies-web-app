@@ -12,13 +12,13 @@ class Movies extends Component {
       }),
       itemsPerPage: 4,
       currentPage: 1,
-      sortObj: { name: "title", order: "asc" }
+      sortObj: { name: "releaseYear", order: "desc" }
     };
   }
 
-  handleSorting(sortObj) {
+  handleSorting = sortObj => {
     this.setState({ sortObj });
-  }
+  };
 
   render() {
     const { movies: allMovies, sortObj } = this.state;
