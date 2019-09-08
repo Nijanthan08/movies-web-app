@@ -15,8 +15,8 @@ const Image = ({ src, size }) => {
       <img
         src={"data:image/jpg;base64," + src}
         className="rounded float-left"
-        width="70px"
-        height="105px"
+        width="200px"
+        height="300px"
       />
     );
 };

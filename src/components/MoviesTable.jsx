@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { moviesTableColumns } from "../util/constants";
 import Image from "./common/ImageComponent";
-import TableCellComponents from "./common/TableCellComponents";
+import TableBody from "./common/TableBodyComponents";
+import TableHeader from "./common/TableHeaderComponents";
 
 class MoviesTable extends Component {
   onSort = sortByColumn => {
-    console.log(sortByColumn);
     const sortObj = { ...this.props.sortObj };
     if (sortObj.name === sortByColumn) {
       sortObj.order = sortObj.order === "asc" ? "desc" : "asc";
@@ -35,7 +35,7 @@ class MoviesTable extends Component {
   };
 
   render() {
-    const { movies } = this.props;
+    const { movies, sortObj } = this.props;
 
     return (
       <table className="table">
@@ -48,8 +48,7 @@ class MoviesTable extends Component {
                   onClick={() => this.onSort(column.value)}
                   className="align-middle"
                 >
-                  {column.label}
-                  {this.renderSortIcon(column.value)}
+                  <TableHeader column={column} sortObj={sortObj} />
                 </th>
               );
             })}
@@ -65,7 +64,7 @@ class MoviesTable extends Component {
                 {moviesTableColumns.map(column => {
                   return (
                     <td className="align-middle">
-                      <TableCellComponents movie={movie} column={column} />
+                      <TableBody data={movie} column={column} />
                     </td>
                   );
                 })}
