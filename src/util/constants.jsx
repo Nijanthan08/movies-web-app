@@ -1,4 +1,11 @@
 export const moviesTableColumns = [
+  {
+    label: "",
+    value: "base64Img",
+    contentType: "image",
+    sort: false,
+    size: "S"
+  },
   { label: "Title", value: "name", contentType: "link", sort: true },
   { label: "Genre", value: "genre", contentType: "text", sort: true },
   { label: "Language", value: "language", contentType: "text", sort: true },

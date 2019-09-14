@@ -26,16 +26,18 @@ class MovieInfo extends Component {
               </td>
               <td>
                 <table className="table table-striped">
+                  <col width="20%" />
+                  <col width="80%" />
                   <tbody>
                     {movieInfoTableColumns.map(column => {
                       return (
                         <tr>
-                          <th width="20%" scope="row">
-                            <TableHeader column={column} sortObj={null} />
-                          </th>
-                          <td width="80%">
-                            <TableBody data={movie} column={column} />
-                          </td>
+                          <TableHeader columns={[column]} wrapTR={false} />
+                          <TableBody
+                            dataArr={[movie]}
+                            columns={[column]}
+                            wrapTR={false}
+                          />
                         </tr>
                       );
                     })}

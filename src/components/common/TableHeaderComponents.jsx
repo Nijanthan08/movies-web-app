@@ -28,9 +28,30 @@ const TextWithSorting = ({ column, sortObj }) => {
   );
 };
 
-const TableHeader = ({ column, sortObj }) => {
+const ThContent = ({ column, sortObj }) => {
   if (column.sort) return <TextWithSorting column={column} sortObj={sortObj} />;
   else return <PlainText column={column} />;
+};
+
+const TableHeader = ({ columns, wrapTR, sortObj = null, onSort = null }) => {
+  const tableHeader = columns.map(column => {
+    if (column.sort)
+      return (
+        <th onClick={() => onSort(column.value)}>
+          <ThContent column={column} sortObj={sortObj} />
+        </th>
+      );
+    else
+      return (
+        <th>
+          <ThContent column={column} sortObj={sortObj} />
+        </th>
+      );
+  });
+
+  if (!wrapTR) return tableHeader;
+
+  return <tr>{tableHeader}</tr>;
 };
 
 export default TableHeader;

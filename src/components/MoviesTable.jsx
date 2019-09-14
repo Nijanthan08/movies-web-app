@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { moviesTableColumns } from "../util/constants";
-import Image from "./common/ImageComponent";
 import TableBody from "./common/TableBodyComponents";
 import TableHeader from "./common/TableHeaderComponents";
 
@@ -38,39 +37,21 @@ class MoviesTable extends Component {
     const { movies, sortObj } = this.props;
 
     return (
-      <table className="table">
+      <table className="table" id="moviesTable">
         <thead>
-          <tr>
-            <th></th>
-            {moviesTableColumns.map(column => {
-              return (
-                <th
-                  onClick={() => this.onSort(column.value)}
-                  className="align-middle"
-                >
-                  <TableHeader column={column} sortObj={sortObj} />
-                </th>
-              );
-            })}
-          </tr>
+          <TableHeader
+            columns={moviesTableColumns}
+            sortObj={sortObj}
+            onSort={this.onSort}
+            wrapTR={true}
+          />
         </thead>
         <tbody>
-          {movies.map(movie => {
-            return (
-              <tr key={movie.id}>
-                <td>
-                  <Image src={movie.base64Img} size="S" />
-                </td>
-                {moviesTableColumns.map(column => {
-                  return (
-                    <td className="align-middle">
-                      <TableBody data={movie} column={column} />
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
+          <TableBody
+            dataArr={movies}
+            columns={moviesTableColumns}
+            wrapTR={true}
+          />
         </tbody>
       </table>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Image from "./ImageComponent";
 
 const PlainText = ({ data, column }) => {
   return data[column.value];
@@ -35,7 +36,7 @@ const Likes = ({ data, column }) => {
   );
 };
 
-const TableBody = ({ data, column }) => {
+const TdContent = ({ data, column }) => {
   if ("text" === column.contentType)
     return <PlainText data={data} column={column} />;
   else if ("link" === column.contentType)
@@ -44,6 +45,30 @@ const TableBody = ({ data, column }) => {
     return <SpecialCharacters data={data} column={column} />;
   else if ("likes" === column.contentType)
     return <Likes data={data} column={column} />;
+  else if ("image" === column.contentType)
+    return <Image src={data.base64Img} size={column.size} />;
+};
+
+const TableBody = ({ dataArr, columns, wrapTR }) => {
+  const tableBody = dataArr.map(data => {
+    return (
+      <React.Fragment>
+        {columns.map(column => {
+          return (
+            <td className="align-middle">
+              <TdContent data={data} column={column} />
+            </td>
+          );
+        })}
+      </React.Fragment>
+    );
+  });
+
+  if (!wrapTR) return tableBody;
+
+  return tableBody.map(row => {
+    return <tr>{row}</tr>;
+  });
 };
 
 export default TableBody;
