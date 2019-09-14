@@ -12,6 +12,11 @@ class NavBar extends Component {
                 Movies
               </a>
             </NavLink>
+            <NavLink to="/AddMovie" className="nav-item">
+              <a className="nav-link" href="#">
+                Add a Movie
+              </a>
+            </NavLink>
           </ul>
         </div>
       </nav>

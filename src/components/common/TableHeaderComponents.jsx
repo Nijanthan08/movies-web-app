@@ -34,16 +34,16 @@ const ThContent = ({ column, sortObj }) => {
 };
 
 const TableHeader = ({ columns, wrapTR, sortObj = null, onSort = null }) => {
-  const tableHeader = columns.map(column => {
+  const tableHeader = columns.map((column, index) => {
     if (column.sort)
       return (
-        <th onClick={() => onSort(column.value)}>
+        <th onClick={() => onSort(column.value)} key={index}>
           <ThContent column={column} sortObj={sortObj} />
         </th>
       );
     else
       return (
-        <th>
+        <th key={index}>
           <ThContent column={column} sortObj={sortObj} />
         </th>
       );

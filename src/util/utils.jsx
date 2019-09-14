@@ -5,3 +5,7 @@ export const getBlobContent = async url => {
   const base64Img = await image2base64(url);
   return base64StringToBlob(base64Img);
 };
+
+export const isJsonObjEmpty = obj => {
+  return Object.keys(obj).length === 0;
+};

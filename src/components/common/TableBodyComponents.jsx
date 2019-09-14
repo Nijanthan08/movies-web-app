@@ -53,9 +53,9 @@ const TableBody = ({ dataArr, columns, wrapTR }) => {
   const tableBody = dataArr.map(data => {
     return (
       <React.Fragment>
-        {columns.map(column => {
+        {columns.map((column, index) => {
           return (
-            <td className="align-middle">
+            <td key={index}>
               <TdContent data={data} column={column} />
             </td>
           );
@@ -66,8 +66,8 @@ const TableBody = ({ dataArr, columns, wrapTR }) => {
 
   if (!wrapTR) return tableBody;
 
-  return tableBody.map(row => {
-    return <tr>{row}</tr>;
+  return tableBody.map((row, index) => {
+    return <tr key={index}>{row}</tr>;
   });
 };
 

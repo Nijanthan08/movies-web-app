@@ -21,17 +21,17 @@ class MovieInfo extends Component {
         <table className="table table-borderless">
           <tbody>
             <tr>
-              <td>
+              <td key="1">
                 <Image src={movie.base64Img} size="M" />
               </td>
-              <td>
-                <table className="table table-striped">
+              <td key="2">
+                <table className="table table-striped" id="movieInfo">
                   <col width="20%" />
                   <col width="80%" />
                   <tbody>
-                    {movieInfoTableColumns.map(column => {
+                    {movieInfoTableColumns.map((column, index) => {
                       return (
-                        <tr>
+                        <tr key={index}>
                           <TableHeader columns={[column]} wrapTR={false} />
                           <TableBody
                             dataArr={[movie]}

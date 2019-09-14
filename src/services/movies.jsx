@@ -87,10 +87,40 @@ const movieInfo = [
   }
 ];
 
+const genres = [
+  { id: 1, name: "Action" },
+  { id: 2, name: "Drama" },
+  { id: 3, name: "Romance" },
+  { id: 4, name: "Science Fiction" },
+  { id: 5, name: "Horror" },
+  { id: 6, name: "Comedy" },
+  { id: 7, name: "Thriller" },
+  { id: 8, name: "Sports" }
+];
+
+const languages = [
+  { id: 1, name: "Tamil" },
+  { id: 2, name: "English" },
+  { id: 3, name: "Hindi" },
+  { id: 4, name: "Malayalam" },
+  { id: 5, name: "Telugu" },
+  { id: 6, name: "Kanada" },
+  { id: 7, name: "Chinese" },
+  { id: 8, name: "Korean" }
+];
+
 export const getMovies = () => {
   return movies;
 };
 
 export const getMovieInfo = id => {
   return movieInfo[0];
+};
+
+export const getGenres = () => {
+  return genres;
+};
+
+export const getLanguages = () => {
+  return languages;
 };
