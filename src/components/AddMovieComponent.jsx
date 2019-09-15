@@ -22,9 +22,15 @@ class AddMovieComponent extends FormComponent {
       uploaded: false
     },
     errors: {},
-    genres: getGenres(),
-    languages: getLanguages()
+    genres: [],
+    languages: []
   };
+
+  async componentDidMount() {
+    const genres = await getGenres();
+    const languages = await getLanguages();
+    this.setState({ genres, languages });
+  }
 
   schema = movieSchema;
 
@@ -59,6 +65,9 @@ class AddMovieComponent extends FormComponent {
 
   render() {
     const { data, errors, genres, languages, image } = this.state;
+
+    if (0 === genres.length || 0 === languages.length)
+      return <h1>Loading...</h1>;
 
     return (
       <div>
