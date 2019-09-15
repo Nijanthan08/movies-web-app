@@ -1,3 +1,5 @@
+export const ALERT_MESSAGE_IMAGE = "Upload an image in .jpeg format";
+
 export const moviesTableColumns = [
   {
     label: "",

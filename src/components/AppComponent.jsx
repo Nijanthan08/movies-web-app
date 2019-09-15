@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import NavBar from "./NavBarComponent";
 import Movies from "./MoviesComponent";
 import MovieInfo from "./MovieInfoComponent";
-import AddMovie from "./AddMovie";
+import AddMovieComponent from "./AddMovieComponent";
 
 class App extends Component {
   render() {
@@ -17,7 +17,7 @@ class App extends Component {
           <Switch>
             <Route path="/Movies/:id" component={MovieInfo} />
             <Route path="/Movies" exact component={Movies} />
-            <Route path="/AddMovie" exact component={AddMovie} />
+            <Route path="/AddMovie" exact component={AddMovieComponent} />
           </Switch>
         </main>
       </React.Fragment>

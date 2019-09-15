@@ -1,4 +1,6 @@
 import { base64Img } from "../services/image";
+import { imageToBase64 } from "../util/utils";
+import { httpPost } from "./httpServices";
 
 const movies = [
   {
@@ -123,4 +125,15 @@ export const getGenres = () => {
 
 export const getLanguages = () => {
   return languages;
+};
+
+export const addMovie = async (data, image) => {
+  const base64Img = await imageToBase64(image);
+  data.genreId = parseInt(data.genreId);
+  data.languageId = parseInt(data.genreId);
+  data.base64Img = base64Img;
+  data.createdBy = 1;
+  data.active = "Y";
+  console.log(data);
+  httpPost("api/movies", data);
 };

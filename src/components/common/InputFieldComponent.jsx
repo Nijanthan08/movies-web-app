@@ -43,6 +43,15 @@ const getDropdownField = (name, value, list, onChange) => {
   );
 };
 
+const getUploadButton = (name, value, onChange) => {
+  return (
+    <React.Fragment>
+      &nbsp;&nbsp;&nbsp;
+      <input type="file" id={name} name={name} onChange={onChange} />
+    </React.Fragment>
+  );
+};
+
 const getYearlyCalendar = (name, value, onChange) => {
   const onDateSelect = year => {
     const element = {
@@ -78,6 +87,8 @@ const InputFieldComponent = ({
     inputField = getTextArea(name, value, onChange);
   } else if ("yearly-calendar" === type) {
     inputField = getYearlyCalendar(name, value, onChange);
+  } else if ("upload" === type) {
+    inputField = getUploadButton(name, value, onChange);
   }
 
   return (
