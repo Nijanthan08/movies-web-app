@@ -7,13 +7,16 @@ class Movies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: getMovies().map(movie => {
-        return { ...movie, ...{ like: false } };
-      }),
+      movies: [],
       itemsPerPage: 4,
       currentPage: 1,
       sortObj: { name: "releaseYear", order: "desc" }
     };
+  }
+
+  async componentDidMount() {
+    const movies = await getMovies();
+    this.setState({ movies });
   }
 
   handleSorting = sortObj => {
@@ -22,7 +25,10 @@ class Movies extends Component {
 
   render() {
     const { movies: allMovies, sortObj } = this.state;
+    if (allMovies.length === 0) return <h1>Movies not available</h1>;
+
     const movies = _.orderBy(allMovies, [sortObj.name], [sortObj.order]);
+
     return (
       <React.Fragment>
         <MoviesTable

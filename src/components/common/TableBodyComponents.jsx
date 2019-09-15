@@ -37,6 +37,7 @@ const Likes = ({ data, column }) => {
 };
 
 const TdContent = ({ data, column }) => {
+  
   if ("text" === column.contentType)
     return <PlainText data={data} column={column} />;
   else if ("link" === column.contentType)

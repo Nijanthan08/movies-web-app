@@ -4,16 +4,25 @@ import Image from "./common/ImageComponent";
 import { movieInfoTableColumns } from "./../util/constants";
 import TableHeader from "./common/TableHeaderComponents";
 import TableBody from "./common/TableBodyComponents";
+import { isJsonObjEmpty } from "../util/utils";
 
 class MovieInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: getMovieInfo(this.props.match.params.id)
+      movie: {}
     };
   }
+
+  async componentDidMount() {
+    const movie = await getMovieInfo(this.props.match.params.id);
+    this.setState({ movie });
+  }
+
   render() {
     const { movie } = this.state;
+
+    if (isJsonObjEmpty(movie)) return <h1>Loading....</h1>;
 
     return (
       <React.Fragment>
