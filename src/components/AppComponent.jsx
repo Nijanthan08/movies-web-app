@@ -5,19 +5,56 @@ import NavBar from "./NavBarComponent";
 import Movies from "./MoviesComponent";
 import MovieInfo from "./MovieInfoComponent";
 import AddMovieComponent from "./AddMovieComponent";
+import ReactLoader from "./common/Loader";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loader: false
+    };
+  }
+
+  toggleLoaderDisplay = () => {
+    this.setState({
+      loader: !this.state.loader
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
+        <ReactLoader loader={this.state.loader} />
         <NavBar />
         <main className="container">
           <h1> New Movies </h1>
 
           <Switch>
-            <Route path="/Movies/:id" component={MovieInfo} />
-            <Route path="/Movies" exact component={Movies} />
-            <Route path="/AddMovie" exact component={AddMovieComponent} />
+            <Route
+              path="/Movies/:id"
+              render={({ match }) => (
+                <MovieInfo
+                  toggleLoaderDisplay={this.toggleLoaderDisplay}
+                  match={match}
+                />
+              )}
+            />
+            <Route
+              path="/Movies"
+              exact
+              render={() => (
+                <Movies toggleLoaderDisplay={this.toggleLoaderDisplay} />
+              )}
+            />
+            <Route
+              path="/AddMovie"
+              exact
+              render={() => (
+                <AddMovieComponent
+                  toggleLoaderDisplay={this.toggleLoaderDisplay}
+                />
+              )}
+            />
           </Switch>
         </main>
       </React.Fragment>

@@ -15,8 +15,10 @@ class Movies extends Component {
   }
 
   async componentDidMount() {
+    this.props.toggleLoaderDisplay();
     const movies = await getMovies();
     this.setState({ movies });
+    this.props.toggleLoaderDisplay();
   }
 
   handleSorting = sortObj => {
@@ -24,7 +26,7 @@ class Movies extends Component {
   };
 
   render() {
-    const { movies: allMovies, sortObj } = this.state;
+    const { movies: allMovies, sortObj, loader } = this.state;
     if (allMovies.length === 0) return <h1>Movies not available</h1>;
 
     const movies = _.orderBy(allMovies, [sortObj.name], [sortObj.order]);

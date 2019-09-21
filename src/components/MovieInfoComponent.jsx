@@ -15,8 +15,10 @@ class MovieInfo extends Component {
   }
 
   async componentDidMount() {
+    this.props.toggleLoaderDisplay();
     const movie = await getMovieInfo(this.props.match.params.id);
     this.setState({ movie });
+    this.props.toggleLoaderDisplay();
   }
 
   render() {

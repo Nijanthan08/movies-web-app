@@ -27,17 +27,16 @@ const Likes = ({ data, column }) => {
     <React.Fragment>
       <i className="fa fa-thumbs-up" aria-hidden="true" />
       &nbsp;
-      {data[column.value1]}
+      {null != data[column.value1] ? data[column.value1] : 0}
       &nbsp;&nbsp;
       <i className="fa fa-thumbs-down" aria-hidden="true" />
       &nbsp;
-      {data[column.value2]}
+      {null != data[column.value2] ? data[column.value2] : 0}
     </React.Fragment>
   );
 };
 
 const TdContent = ({ data, column }) => {
-  
   if ("text" === column.contentType)
     return <PlainText data={data} column={column} />;
   else if ("link" === column.contentType)
