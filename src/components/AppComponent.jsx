@@ -7,6 +7,7 @@ import MovieInfo from "./MovieInfoComponent";
 import AddMovieComponent from "./AddMovieComponent";
 import ReactLoader from "./common/Loader";
 import SignUpComponent from "./SignUpComponent";
+import LoginComponent from "./LoginComponent";
 
 class App extends Component {
   constructor(props) {
@@ -66,6 +67,16 @@ class App extends Component {
               exact
               render={({ history }) => (
                 <SignUpComponent
+                  toggleLoaderDisplay={this.toggleLoaderDisplay}
+                  history={history}
+                />
+              )}
+            />
+            <Route
+              path="/Login"
+              exact
+              render={({ history }) => (
+                <LoginComponent
                   toggleLoaderDisplay={this.toggleLoaderDisplay}
                   history={history}
                 />

@@ -50,3 +50,10 @@ export const userSchema = {
     .required()
     .options({ language: { any: { allowOnly: "Password Mismatch" } } })
 };
+
+export const loginSchema = {
+  emailId: Joi.string()
+    .email({ minDomainAtoms: 2 })
+    .required(),
+  password: Joi.string().required()
+};

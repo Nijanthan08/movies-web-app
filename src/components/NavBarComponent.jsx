@@ -22,6 +22,11 @@ class NavBar extends Component {
                 SignUp
               </a>
             </NavLink>
+            <NavLink to="/Login" className="nav-item">
+              <a className="nav-link" href="#">
+                Login
+              </a>
+            </NavLink>
           </ul>
         </div>
       </nav>
