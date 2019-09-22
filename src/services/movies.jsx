@@ -30,5 +30,8 @@ export const addMovie = async (data, image) => {
   data.active = "Y";
 
   const result = await httpPost("api/movies", data);
-  console.log(result);
+};
+
+export const addReview = async data => {
+  await httpPost("api/movies/review", data);
 };

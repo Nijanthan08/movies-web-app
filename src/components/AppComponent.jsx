@@ -22,9 +22,10 @@ class App extends Component {
   };
 
   render() {
+    const { loader } = this.state;
     return (
       <React.Fragment>
-        <ReactLoader loader={this.state.loader} />
+        <ReactLoader loader={loader} />
         <NavBar />
         <main className="container">
           <h1> New Movies </h1>
@@ -43,7 +44,10 @@ class App extends Component {
               path="/Movies"
               exact
               render={() => (
-                <Movies toggleLoaderDisplay={this.toggleLoaderDisplay} />
+                <Movies
+                  toggleLoaderDisplay={this.toggleLoaderDisplay}
+                  loader={loader}
+                />
               )}
             />
             <Route

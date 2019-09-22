@@ -51,3 +51,8 @@ export const movieInfoTableColumns = [
   },
   { label: "Plot", value: "story", contentType: "text", sort: false }
 ];
+
+export const likeMovieValues = [
+  { label: "Yes", value: "Y" },
+  { label: "No", value: "N" }
+];

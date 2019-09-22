@@ -68,6 +68,50 @@ const getYearlyCalendar = (name, value, onChange) => {
   );
 };
 
+const getRadioButton = (name, value, onChange, list) => {
+  const options = list.map(obj => {
+    return (
+      <React.Fragment>
+        <input
+          type="radio"
+          name={name}
+          value={obj.value}
+          onClick={onChange}
+          key={obj.value}
+        />
+        {obj.label} &nbsp;&nbsp;
+      </React.Fragment>
+    );
+  });
+  return (
+    <React.Fragment>
+      <br />
+      {options}
+    </React.Fragment>
+  );
+};
+
+const getRangeInputType = (name, value, onChange, min, max, label) => {
+  return (
+    <React.Fragment>
+      <br />
+      <input
+        type="range"
+        min={min}
+        max={max}
+        className="slider"
+        name={name}
+        onChange={onChange}
+        value={value}
+        step="0.25"
+      />
+      <p>
+        {label}: {value}
+      </p>
+    </React.Fragment>
+  );
+};
+
 const InputFieldComponent = ({
   type,
   value,
@@ -75,7 +119,9 @@ const InputFieldComponent = ({
   onChange,
   name,
   label,
-  list = []
+  list = [],
+  min = null,
+  max = null
 }) => {
   let inputField;
 
@@ -89,6 +135,10 @@ const InputFieldComponent = ({
     inputField = getYearlyCalendar(name, value, onChange);
   } else if ("upload" === type) {
     inputField = getUploadButton(name, value, onChange);
+  } else if ("radio" === type) {
+    inputField = getRadioButton(name, value, onChange, list);
+  } else if ("range" === type) {
+    inputField = getRangeInputType(name, value, onChange, min, max, label);
   }
 
   return (

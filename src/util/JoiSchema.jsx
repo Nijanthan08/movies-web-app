@@ -13,3 +13,19 @@ export const movieSchema = {
     .max(200)
     .required()
 };
+
+export const reviewSchema = {
+  createdUserId: Joi.optional(),
+  createdUserName: Joi.string().required(),
+  likeMovie: Joi.string()
+    .min(1)
+    .max(1)
+    .required(),
+  rating: Joi.number()
+    .min(0.25)
+    .required(),
+  comments: Joi.string()
+    .min(10)
+    .max(200)
+    .required()
+};
