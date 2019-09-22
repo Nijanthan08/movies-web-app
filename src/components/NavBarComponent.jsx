@@ -17,6 +17,11 @@ class NavBar extends Component {
                 Add a Movie
               </a>
             </NavLink>
+            <NavLink to="/SignUp" className="nav-item">
+              <a className="nav-link" href="#">
+                SignUp
+              </a>
+            </NavLink>
           </ul>
         </div>
       </nav>

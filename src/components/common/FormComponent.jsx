@@ -19,6 +19,7 @@ class FormComponent extends Component {
         errors[element.path] = element.message;
       });
     }
+
     this.setState({ errors });
   };
 
@@ -27,8 +28,12 @@ class FormComponent extends Component {
     const { name, value } = e.currentTarget;
     data[name] = value;
     this.setState({ data });
-
-    this.validateInput({ [name]: value }, { [name]: this.schema[name] }, name);
+    if ("confirmPassword" !== name)
+      this.validateInput(
+        { [name]: value },
+        { [name]: this.schema[name] },
+        name
+      );
   };
 }
 

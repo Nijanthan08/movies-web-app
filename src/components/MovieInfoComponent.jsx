@@ -6,6 +6,7 @@ import TableHeader from "./common/TableHeaderComponents";
 import TableBody from "./common/TableBodyComponents";
 import { isJsonObjEmpty } from "../util/utils";
 import ReviewModal from "./common/ReviewModal";
+import _ from "lodash";
 
 class MovieInfo extends Component {
   constructor(props) {
@@ -17,22 +18,27 @@ class MovieInfo extends Component {
   }
 
   async componentDidMount() {
+    this.retrieveMovieInfo();
+  }
+
+  retrieveMovieInfo = async () => {
     this.props.toggleLoaderDisplay();
     const movie = await getMovieInfo(this.props.match.params.id);
     this.setState({ movie });
     this.props.toggleLoaderDisplay();
-  }
-
-  toggleModalDisplay = () => {
-    this.setState({ modalIsOpen: !this.state.modalIsOpen });
   };
 
   addReview = () => {
     this.toggleModalDisplay();
   };
 
+  toggleModalDisplay = () => {
+    this.setState({ modalIsOpen: !this.state.modalIsOpen });
+  };
+
   render() {
     const { movie, modalIsOpen } = this.state;
+    const { toggleLoaderDisplay } = this.props;
 
     if (isJsonObjEmpty(movie)) return <h1>Loading....</h1>;
 
@@ -43,7 +49,8 @@ class MovieInfo extends Component {
           movieName={movie.name}
           modalIsOpen={modalIsOpen}
           toggleModalDisplay={this.toggleModalDisplay}
-          toggleLoaderDisplay={this.props.toggleLoaderDisplay}
+          toggleLoaderDisplay={toggleLoaderDisplay}
+          retrieveMovieInfo={this.retrieveMovieInfo}
         />
         <h1>{movie.name}</h1>
         <table className="table table-borderless">
@@ -96,7 +103,9 @@ class MovieInfo extends Component {
 const PrintReviews = ({ reviews }) => {
   if (0 === reviews.length) return <h1>No Reviews Available</h1>;
 
-  return reviews.map(obj => {
+  const orderedReviews = _.orderBy(reviews, "createTimestamp", "desc");
+
+  return orderedReviews.map(obj => {
     return (
       <div
         style={{

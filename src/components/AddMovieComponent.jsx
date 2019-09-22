@@ -42,7 +42,10 @@ class AddMovieComponent extends FormComponent {
     await this.validateInput(data, this.schema);
 
     if (isJsonObjEmpty(this.state.errors) && image.uploaded) {
+      this.props.toggleLoaderDisplay();
       await addMovie(data, image.value);
+      this.props.toggleLoaderDisplay();
+      this.props.history.push("/movies");
     } else if (!image.uploaded) {
       this.updateImageState(false, ALERT_MESSAGE_IMAGE);
     }

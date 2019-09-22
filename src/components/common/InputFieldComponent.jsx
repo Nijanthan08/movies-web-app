@@ -125,7 +125,7 @@ const InputFieldComponent = ({
 }) => {
   let inputField;
 
-  if ("text" === type) {
+  if ("text" === type || "password" === type) {
     inputField = getTextBox(type, name, value, onChange);
   } else if ("drop-down" === type) {
     inputField = getDropdownField(name, value, list, onChange);

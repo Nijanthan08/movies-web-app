@@ -25,16 +25,20 @@ class ReviewModal extends FormComponent {
     e.preventDefault();
     const { data } = this.state;
     await this.validateInput(data, this.schema);
-    console.log(this.state.errors);
     if (isJsonObjEmpty(this.state.errors)) {
-      const { movieId, toggleLoaderDisplay } = this.props;
+      const {
+        movieId,
+        toggleLoaderDisplay,
+        toggleModalDisplay,
+        retrieveMovieInfo
+      } = this.props;
       toggleLoaderDisplay();
       const reviewObj = { ...this.state.data };
       reviewObj.movieId = movieId;
-      console.log(reviewObj);
       await addReview(reviewObj);
       toggleLoaderDisplay();
-      //<Redirect to={"/Movies/" + movieId} />;
+      toggleModalDisplay();
+      retrieveMovieInfo();
     }
   };
 

@@ -31,7 +31,7 @@ class Movies extends Component {
     if (loader) return <h1>Loading...</h1>;
     else if (allMovies.length === 0) return <h1>Movies not available</h1>;
 
-    const movies = _.orderBy(allMovies, [sortObj.name], [sortObj.order]);
+    const movies = _.orderBy(allMovies, "createdTimestamp", "desc");
 
     return (
       <React.Fragment>

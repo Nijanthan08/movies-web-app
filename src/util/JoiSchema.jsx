@@ -29,3 +29,24 @@ export const reviewSchema = {
     .max(200)
     .required()
 };
+
+export const userSchema = {
+  firstName: Joi.string()
+    .min(1)
+    .max(30)
+    .required(),
+  lastName: Joi.string()
+    .min(1)
+    .max(30)
+    .required(),
+  emailId: Joi.string()
+    .email({ minDomainAtoms: 2 })
+    .required(),
+  password: Joi.string()
+    .min(8)
+    .required(),
+  confirmPassword: Joi.any()
+    .valid(Joi.ref("password"))
+    .required()
+    .options({ language: { any: { allowOnly: "Password Mismatch" } } })
+};
