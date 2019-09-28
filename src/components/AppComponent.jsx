@@ -8,14 +8,22 @@ import AddMovieComponent from "./AddMovieComponent";
 import ReactLoader from "./common/Loader";
 import SignUpComponent from "./SignUpComponent";
 import LoginComponent from "./LoginComponent";
+import { decodeToken } from "../util/authentication";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loader: false
+      loader: false,
+      user: null
     };
   }
+
+  componentDidMount() {
+    this.setUserInfo(decodeToken());
+  }
+
+  setUserInfo = user => this.setState({ user });
 
   toggleLoaderDisplay = () => {
     this.setState({
@@ -24,7 +32,8 @@ class App extends Component {
   };
 
   render() {
-    const { loader } = this.state;
+    const { loader, user } = this.state;
+    console.log(user);
     return (
       <React.Fragment>
         <ReactLoader loader={loader} />
@@ -43,7 +52,7 @@ class App extends Component {
               )}
             />
             <Route
-              path="/Movies"
+              path="/movies"
               exact
               render={() => (
                 <Movies
@@ -53,17 +62,18 @@ class App extends Component {
               )}
             />
             <Route
-              path="/AddMovie"
+              path="/add_movie"
               exact
               render={({ history }) => (
                 <AddMovieComponent
                   toggleLoaderDisplay={this.toggleLoaderDisplay}
                   history={history}
+                  user={user}
                 />
               )}
             />
             <Route
-              path="/SignUp"
+              path="/sign_up"
               exact
               render={({ history }) => (
                 <SignUpComponent
@@ -73,12 +83,13 @@ class App extends Component {
               )}
             />
             <Route
-              path="/Login"
+              path="/login"
               exact
               render={({ history }) => (
                 <LoginComponent
                   toggleLoaderDisplay={this.toggleLoaderDisplay}
                   history={history}
+                  setUserInfo={this.setUserInfo}
                 />
               )}
             />

@@ -6,6 +6,7 @@ import { getGenres, getLanguages } from "../services/movies";
 import { isJsonObjEmpty } from "../util/utils";
 import { addMovie } from "./../services/movies";
 import { ALERT_MESSAGE_IMAGE } from "./../util/constants";
+import { getTokenFromCookie } from "./../util/authentication";
 
 class AddMovieComponent extends FormComponent {
   state = {
@@ -27,11 +28,13 @@ class AddMovieComponent extends FormComponent {
   };
 
   async componentDidMount() {
-    this.props.toggleLoaderDisplay();
-    const genres = await getGenres();
-    const languages = await getLanguages();
-    this.setState({ genres, languages });
-    this.props.toggleLoaderDisplay();
+    if (this.props.user && getTokenFromCookie()) {
+      this.props.toggleLoaderDisplay();
+      const genres = await getGenres();
+      const languages = await getLanguages();
+      this.setState({ genres, languages });
+      this.props.toggleLoaderDisplay();
+    } else this.props.history.push("/login");
   }
 
   schema = movieSchema;

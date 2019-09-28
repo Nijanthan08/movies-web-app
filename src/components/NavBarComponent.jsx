@@ -7,22 +7,17 @@ class NavBar extends Component {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav">
-            <NavLink to="/Movies" className="nav-item">
+            <NavLink to="/movies" className="nav-item">
               <a className="nav-link" href="#">
                 Movies
               </a>
             </NavLink>
-            <NavLink to="/AddMovie" className="nav-item">
+            <NavLink to="/add_movie" className="nav-item">
               <a className="nav-link" href="#">
                 Add a Movie
               </a>
             </NavLink>
-            <NavLink to="/SignUp" className="nav-item">
-              <a className="nav-link" href="#">
-                SignUp
-              </a>
-            </NavLink>
-            <NavLink to="/Login" className="nav-item">
+            <NavLink to="/login" className="nav-item">
               <a className="nav-link" href="#">
                 Login
               </a>
