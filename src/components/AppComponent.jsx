@@ -39,7 +39,7 @@ class App extends Component {
       <React.Fragment>
         <ReactLoader loader={loader} />
         <ToastContainer />
-        <NavBar />
+        <NavBar user={user} setUserInfo={this.setUserInfo} />
         <main className="container">
           <h1> New Movies </h1>
 

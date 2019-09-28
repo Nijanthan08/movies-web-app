@@ -16,3 +16,5 @@ export const decodeToken = () => {
 export const setTokenToCookie = value => cookie.save(AUTH_TOKEN, value);
 
 export const getTokenFromCookie = () => cookie.load(AUTH_TOKEN);
+
+export const delTokenFromCookie = () => cookie.remove(AUTH_TOKEN);
