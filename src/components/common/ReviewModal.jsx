@@ -19,6 +19,16 @@ class ReviewModal extends FormComponent {
     errors: {}
   };
 
+  componentDidMount() {
+    const { user } = this.props;
+    if (user) {
+      const data = { ...this.state.data };
+      data.createdUserId = user.id;
+      data.createdUserName = user.firstName;
+      this.setState({ data });
+    }
+  }
+
   schema = reviewSchema;
 
   handleSubmit = async e => {
@@ -66,6 +76,7 @@ class ReviewModal extends FormComponent {
           onChange={this.handleChange}
           name="createdUserName"
           label="Reviewed By"
+          disabled={data.createdUserId ? true : false}
         />
         <InputFieldComponent
           type="radio"

@@ -9,6 +9,7 @@ import ReactLoader from "./common/Loader";
 import SignUpComponent from "./SignUpComponent";
 import LoginComponent from "./LoginComponent";
 import { decodeToken } from "../util/authentication";
+import { ToastContainer } from "react-toastify";
 
 class App extends Component {
   constructor(props) {
@@ -33,10 +34,11 @@ class App extends Component {
 
   render() {
     const { loader, user } = this.state;
-    console.log(user);
+
     return (
       <React.Fragment>
         <ReactLoader loader={loader} />
+        <ToastContainer />
         <NavBar />
         <main className="container">
           <h1> New Movies </h1>
@@ -48,6 +50,7 @@ class App extends Component {
                 <MovieInfo
                   toggleLoaderDisplay={this.toggleLoaderDisplay}
                   match={match}
+                  user={user}
                 />
               )}
             />

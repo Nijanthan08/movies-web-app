@@ -7,6 +7,7 @@ import TableBody from "./common/TableBodyComponents";
 import { isJsonObjEmpty } from "../util/utils";
 import ReviewModal from "./common/ReviewModal";
 import _ from "lodash";
+import { toast } from "react-toastify";
 
 class MovieInfo extends Component {
   constructor(props) {
@@ -29,7 +30,19 @@ class MovieInfo extends Component {
   };
 
   addReview = () => {
-    this.toggleModalDisplay();
+    const { user } = this.props;
+    if (!user) {
+      this.toggleModalDisplay();
+      return;
+    }
+
+    const reviewedUserIds = this.state.movie.reviews.map(
+      obj => obj.createdUserId
+    );
+
+    if (_.find(reviewedUserIds, id => id === user.id))
+      toast.info("You have already reviewed the movie!!!");
+    else this.toggleModalDisplay();
   };
 
   toggleModalDisplay = () => {
@@ -38,7 +51,7 @@ class MovieInfo extends Component {
 
   render() {
     const { movie, modalIsOpen } = this.state;
-    const { toggleLoaderDisplay } = this.props;
+    const { toggleLoaderDisplay, user } = this.props;
 
     if (isJsonObjEmpty(movie)) return <h1>Loading....</h1>;
 
@@ -51,6 +64,7 @@ class MovieInfo extends Component {
           toggleModalDisplay={this.toggleModalDisplay}
           toggleLoaderDisplay={toggleLoaderDisplay}
           retrieveMovieInfo={this.retrieveMovieInfo}
+          user={user}
         />
         <h1>{movie.name}</h1>
         <table className="table table-borderless">

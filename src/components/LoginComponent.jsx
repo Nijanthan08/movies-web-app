@@ -1,5 +1,5 @@
 import React from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import FormComponent from "./common/FormComponent";
 import { loginSchema } from "./../util/JoiSchema";
 import InputFieldComponent from "./common/InputFieldComponent";
@@ -47,8 +47,6 @@ class LoginComponent extends FormComponent {
     const { data, errors } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
-        <ToastContainer />
-
         <h1>Login</h1>
         <InputFieldComponent
           type="text"

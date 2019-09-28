@@ -1,7 +1,7 @@
 import React from "react";
 import YearPicker from "react-year-picker";
 
-const getTextBox = (type, name, value, onChange) => {
+const getTextBox = (type, name, value, onChange, disabled) => {
   return (
     <input
       className="form-control"
@@ -10,6 +10,7 @@ const getTextBox = (type, name, value, onChange) => {
       name={name}
       value={value}
       onChange={onChange}
+      disabled={disabled}
     />
   );
 };
@@ -121,12 +122,13 @@ const InputFieldComponent = ({
   label,
   list = [],
   min = null,
-  max = null
+  max = null,
+  disabled = false
 }) => {
   let inputField;
 
   if ("text" === type || "password" === type) {
-    inputField = getTextBox(type, name, value, onChange);
+    inputField = getTextBox(type, name, value, onChange, disabled);
   } else if ("drop-down" === type) {
     inputField = getDropdownField(name, value, list, onChange);
   } else if ("textarea" === type) {

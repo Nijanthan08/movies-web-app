@@ -1,7 +1,7 @@
 import cookie from "react-cookies";
 import jwtDecode from "jwt-decode";
 
-const AUTH_TOKEN = "AUTH-TOKEN";
+export const AUTH_TOKEN = "X-AUTH-TOKEN";
 
 export const decodeToken = () => {
   const token = getTokenFromCookie();
