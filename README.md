@@ -14,4 +14,6 @@ Movie Review Portal build using React JS
 
 3. Add a Movie to the portal
 
+![](/screenshots/AddMovie.jpg)
+
 Please follow the steps mentioned below to setup in your local
