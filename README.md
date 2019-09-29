@@ -1,3 +1,3 @@
 # movies-web-app
 
-React JS web application to find ratings and add review for Movies
+Movie Review Portal build using React JS
