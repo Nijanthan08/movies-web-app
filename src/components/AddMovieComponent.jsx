@@ -46,9 +46,10 @@ class AddMovieComponent extends FormComponent {
 
     if (isJsonObjEmpty(this.state.errors) && image.uploaded) {
       this.props.toggleLoaderDisplay();
-      await addMovie(data, image.value);
+      const response = await addMovie(data, image.value);
       this.props.toggleLoaderDisplay();
-      this.props.history.push("/movies");
+      if (200 === response.status) this.props.history.push("/movies");
+      else this.props.history.push("/login");
     } else if (!image.uploaded) {
       this.updateImageState(false, ALERT_MESSAGE_IMAGE);
     }

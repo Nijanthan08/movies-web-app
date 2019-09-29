@@ -40,15 +40,16 @@ class ReviewModal extends FormComponent {
         movieId,
         toggleLoaderDisplay,
         toggleModalDisplay,
-        retrieveMovieInfo
+        retrieveMovieInfo,
+        history
       } = this.props;
       toggleLoaderDisplay();
       const reviewObj = { ...this.state.data };
       reviewObj.movieId = movieId;
-      await addReview(reviewObj);
+      const { status } = await addReview(reviewObj);
       toggleLoaderDisplay();
       toggleModalDisplay();
-      retrieveMovieInfo();
+      200 === status ? retrieveMovieInfo() : history.push("/movies");
     }
   };
 

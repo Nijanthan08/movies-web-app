@@ -16,6 +16,11 @@ class NavBar extends Component {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav">
+            <NavLink to="/" className="nav-item">
+              <a className="nav-link" href="#">
+                <i class="fa fa-home" aria-hidden="true"></i>
+              </a>
+            </NavLink>
             <NavLink to="/movies" className="nav-item">
               <a className="nav-link" href="#">
                 Movies

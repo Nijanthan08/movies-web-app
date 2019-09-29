@@ -17,8 +17,8 @@ export const getMovies = async () => {
 };
 
 export const getMovieInfo = async id => {
-  const { data: movieInfo } = await httpGet(`api/movies/${id}`);
-  return movieInfo[0];
+  const { data } = await httpGet(`api/movies/${id}`);
+  return data.length ? data[0] : {};
 };
 
 export const addMovie = async (data, image) => {
@@ -29,9 +29,9 @@ export const addMovie = async (data, image) => {
   data.createdBy = 1;
   data.active = "Y";
 
-  const result = await httpPost("api/movies", data);
+  return await httpPost("api/movies", data);
 };
 
 export const addReview = async data => {
-  await httpPost("api/movies/review", data);
+  return await httpPost("api/movies/review", data);
 };

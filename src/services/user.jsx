@@ -9,10 +9,5 @@ export const addUser = async data => {
 };
 
 export const login = async req => {
-  try {
-    return await httpPost("api/users/login", req);
-  } catch (error) {
-    console.log(error);
-    return { status: 403 };
-  }
+  return await httpPost("api/users/login", req);
 };

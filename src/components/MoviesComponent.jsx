@@ -29,12 +29,14 @@ class Movies extends Component {
     const { movies: allMovies, sortObj, loader } = this.state;
 
     if (loader) return <h1>Loading...</h1>;
-    else if (allMovies.length === 0) return <h1>Movies not available</h1>;
+    else if (allMovies.length === 0)
+      return <h1>No Movies to Display. Try again after a while...</h1>;
 
     const movies = _.orderBy(allMovies, "createdTimestamp", "desc");
 
     return (
       <React.Fragment>
+        <h1>Newly added Movies</h1>
         <MoviesTable
           movies={movies}
           sortObj={sortObj}

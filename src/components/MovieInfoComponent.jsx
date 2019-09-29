@@ -51,7 +51,7 @@ class MovieInfo extends Component {
 
   render() {
     const { movie, modalIsOpen } = this.state;
-    const { toggleLoaderDisplay, user } = this.props;
+    const { toggleLoaderDisplay, user, history } = this.props;
 
     if (isJsonObjEmpty(movie)) return <h1>Loading....</h1>;
 
@@ -65,6 +65,7 @@ class MovieInfo extends Component {
           toggleLoaderDisplay={toggleLoaderDisplay}
           retrieveMovieInfo={this.retrieveMovieInfo}
           user={user}
+          history={history}
         />
         <h1>{movie.name}</h1>
         <table className="table table-borderless">

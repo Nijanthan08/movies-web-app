@@ -35,8 +35,6 @@ class LoginComponent extends FormComponent {
         setTokenToCookie(authToken);
         setUserInfo(decodeToken());
         history.push("/movies");
-      } else {
-        toast.error("Invalid Credentials !!!");
       }
     }
   };
