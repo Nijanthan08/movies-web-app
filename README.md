@@ -1,6 +1,6 @@
 # movies-web-app
 
-Movie Review Portal build using React JS
+# Movie Review Portal build using React JS
 
 1. View the list of Movies available in Portal
 
@@ -16,7 +16,7 @@ Movie Review Portal build using React JS
 
 ![](/screenshots/AddMovie.jpg)
 
-Please follow the steps mentioned below to host the WEB APP in your local:
+# Please follow the steps mentioned below to host the WEB APP in your local:
 
 1. Make sure to install the following softwares mentioned below
 
