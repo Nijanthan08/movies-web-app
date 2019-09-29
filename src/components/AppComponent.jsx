@@ -10,6 +10,7 @@ import SignUpComponent from "./SignUpComponent";
 import LoginComponent from "./LoginComponent";
 import { decodeToken } from "../util/authentication";
 import { ToastContainer } from "react-toastify";
+import HomePage from "./HomePageComponent";
 
 class App extends Component {
   constructor(props) {
@@ -41,15 +42,14 @@ class App extends Component {
         <ToastContainer />
         <NavBar user={user} setUserInfo={this.setUserInfo} />
         <main className="container">
-          <h1> New Movies </h1>
-
           <Switch>
             <Route
               path="/Movies/:id"
-              render={({ match }) => (
+              render={({ match, history }) => (
                 <MovieInfo
                   toggleLoaderDisplay={this.toggleLoaderDisplay}
                   match={match}
+                  history={history}
                   user={user}
                 />
               )}
@@ -96,6 +96,7 @@ class App extends Component {
                 />
               )}
             />
+            <Route path="/" render={({ match }) => <HomePage />} />
           </Switch>
         </main>
       </React.Fragment>
