@@ -1,6 +1,6 @@
 # movies-web-app
 
-# Movie Review Portal build using React JS
+Movie Review Portal build using React JS
 
 1. View the list of Movies available in Portal
 
