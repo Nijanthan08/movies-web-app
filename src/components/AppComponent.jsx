@@ -11,6 +11,7 @@ import LoginComponent from "./LoginComponent";
 import { decodeToken } from "../util/authentication";
 import { ToastContainer } from "react-toastify";
 import HomePage from "./HomePageComponent";
+import PopularMovies from "./PopularMoviesComponent";
 
 class App extends Component {
   constructor(props) {
@@ -44,6 +45,16 @@ class App extends Component {
         <main className="container">
           <Switch>
             <Route
+              path="/popular-movies"
+              exact
+              render={() => (
+                <PopularMovies
+                  toggleLoaderDisplay={this.toggleLoaderDisplay}
+                  loader={loader}
+                />
+              )}
+            />
+            <Route
               path="/Movies/:id"
               render={({ match, history }) => (
                 <MovieInfo
@@ -51,6 +62,7 @@ class App extends Component {
                   match={match}
                   history={history}
                   user={user}
+                  loader={loader}
                 />
               )}
             />

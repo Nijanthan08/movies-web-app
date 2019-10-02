@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import _ from "lodash";
 import { getMovies } from "../services/movies";
 import MoviesTable from "./MoviesTable.jsx";
-import _ from "lodash";
+import { moviesTableColumns } from "../util/constants";
 
 class Movies extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Movies extends Component {
       movies: [],
       itemsPerPage: 4,
       currentPage: 1,
-      sortObj: { name: "releaseYear", order: "desc" }
+      sortObj: { name: "createdTimestamp", order: "desc" }
     };
   }
 
@@ -26,13 +27,14 @@ class Movies extends Component {
   };
 
   render() {
-    const { movies: allMovies, sortObj, loader } = this.state;
+    const { movies: allMovies, sortObj } = this.state;
+    const { loader } = this.props;
 
     if (loader) return <h1>Loading...</h1>;
     else if (allMovies.length === 0)
       return <h1>No Movies to Display. Try again after a while...</h1>;
 
-    const movies = _.orderBy(allMovies, "createdTimestamp", "desc");
+    const movies = _.orderBy(allMovies, sortObj.name, sortObj.order);
 
     return (
       <React.Fragment>
@@ -41,6 +43,7 @@ class Movies extends Component {
           movies={movies}
           sortObj={sortObj}
           handleSorting={this.handleSorting}
+          columns={moviesTableColumns}
         />
       </React.Fragment>
     );

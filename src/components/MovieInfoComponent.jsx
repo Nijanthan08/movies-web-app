@@ -51,9 +51,11 @@ class MovieInfo extends Component {
 
   render() {
     const { movie, modalIsOpen } = this.state;
-    const { toggleLoaderDisplay, user, history } = this.props;
+    const { toggleLoaderDisplay, user, history, loader } = this.props;
 
-    if (isJsonObjEmpty(movie)) return <h1>Loading....</h1>;
+    if (loader) return <h1>Loading...</h1>;
+    else if (isJsonObjEmpty(movie))
+      return <h1>Movie Information not Available</h1>;
 
     return (
       <React.Fragment>

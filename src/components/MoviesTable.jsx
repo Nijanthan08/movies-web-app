@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { moviesTableColumns } from "../util/constants";
 import TableBody from "./common/TableBodyComponents";
 import TableHeader from "./common/TableHeaderComponents";
 
@@ -34,24 +33,20 @@ class MoviesTable extends Component {
   };
 
   render() {
-    const { movies, sortObj } = this.props;
+    const { movies, sortObj, columns } = this.props;
 
     return (
       <table className="table" id="moviesTable">
         <thead>
           <TableHeader
-            columns={moviesTableColumns}
+            columns={columns}
             sortObj={sortObj}
             onSort={this.onSort}
             wrapTR={true}
           />
         </thead>
         <tbody>
-          <TableBody
-            dataArr={movies}
-            columns={moviesTableColumns}
-            wrapTR={true}
-          />
+          <TableBody dataArr={movies} columns={columns} wrapTR={true} />
         </tbody>
       </table>
     );

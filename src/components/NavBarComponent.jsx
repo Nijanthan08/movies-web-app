@@ -31,6 +31,11 @@ class NavBar extends Component {
                 Add a Movie
               </a>
             </NavLink>
+            <NavLink to="/popular-movies" className="nav-item">
+              <a className="nav-link" href="#">
+                Top 10 Movies
+              </a>
+            </NavLink>
           </ul>
         </div>
         {sessionActive ? (

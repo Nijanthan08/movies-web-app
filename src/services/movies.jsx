@@ -16,6 +16,11 @@ export const getMovies = async () => {
   return movies;
 };
 
+export const getPopularMovies = async () => {
+  const { data: movies } = await httpGet("api/movies/popular");
+  return movies;
+};
+
 export const getMovieInfo = async id => {
   const { data } = await httpGet(`api/movies/${id}`);
   return data.length ? data[0] : {};
