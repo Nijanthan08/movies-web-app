@@ -48,4 +48,6 @@ Movie Review Portal build using React JS
 
       https://github.com/Nijanthan08/movies-rest-api
 
-    
+5. Refer the following repository to host the Spring Boot Batch Application for processing User Reviews and publish Top Rated Movies
+
+      https://github.com/Nijanthan08/movies-spring-boot-batch
