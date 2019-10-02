@@ -16,6 +16,10 @@ Movie Review Portal build using React JS
 
 ![](/screenshots/AddMovie.jpg)
 
+4. View Top Rated Movies
+
+![](/screenshots/Top10Movies.jpg)
+
 # Please follow the steps mentioned below to host the WEB APP in your local:
 
 1. Make sure to install the following softwares mentioned below
