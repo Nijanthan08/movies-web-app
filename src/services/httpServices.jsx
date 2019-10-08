@@ -12,7 +12,11 @@ axios.interceptors.response.use(null, error => {
   }
 
   const { status, data } = error.response;
-  if (data) toast.error(data);
+  console.log(error.response);
+  if (data) {
+    if (typeof data === "string") toast.error(data);
+    else toast.error(data.message);
+  }
   return { status, data: [] };
 });
 
