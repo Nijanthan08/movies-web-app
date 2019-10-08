@@ -25,9 +25,13 @@ class SignUpComponent extends FormComponent {
   handleSubmit = async e => {
     e.preventDefault();
     const { data } = this.state;
+    const { toggleLoaderDisplay, history } = this.props;
     await this.validateInput(data, this.schema);
     if (isJsonObjEmpty(this.state.errors)) {
-      await addUser(data);
+      toggleLoaderDisplay();
+      const { status } = await addUser(data);
+      toggleLoaderDisplay();
+      if (200 === status) history.push("/login");
     }
   };
 
