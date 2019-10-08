@@ -44,7 +44,7 @@ Movie Review Portal build using React JS
     
       src\util\config.json
       
-#5. Refer any one of the following repository to host the backend REST API as per your preference.
+# 5. Refer any one of the following repository to host the backend REST API as per your preference.
 
       https://github.com/Nijanthan08/movies-rest-api (Built using Node.js)
       
