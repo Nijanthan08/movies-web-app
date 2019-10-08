@@ -16,6 +16,10 @@ Movie Review Portal build using React JS
 
 ![](/screenshots/AddMovie.jpg)
 
+4. View Top Rated Movies
+
+![](/screenshots/Top10Movies.jpg)
+
 # Please follow the steps mentioned below to host the WEB APP in your local:
 
 1. Make sure to install the following softwares mentioned below
@@ -44,4 +48,6 @@ Movie Review Portal build using React JS
 
       https://github.com/Nijanthan08/movies-rest-api
 
-    
+6. A Spring Boot Batch Application is needed for processing User Reviews and update the Database with Top Rated Movies in Real-Time
+
+      https://github.com/Nijanthan08/movies-spring-boot-batch
