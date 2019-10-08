@@ -44,9 +44,11 @@ Movie Review Portal build using React JS
     
       src\util\config.json
       
-5. Refer the following repository to host the backend REST API in your local
+#5. Refer any one of the following repository to host the backend REST API as per your preference.
 
-      https://github.com/Nijanthan08/movies-rest-api
+      https://github.com/Nijanthan08/movies-rest-api (Built using Node.js)
+      
+      https://github.com/Nijanthan08/movies-spring-boot-rest-api (Built using Spring Boot)
 
 6. A Spring Boot Batch Application is needed for processing User Reviews and update the Database with Top Rated Movies in Real-Time
 
