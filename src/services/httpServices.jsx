@@ -1,7 +1,6 @@
 import axios from "axios";
 import { apiEndPoint } from "../util/config.json";
-import { getTokenFromCookie } from "../util/authentication.jsx";
-import { AUTH_TOKEN } from "./../util/authentication";
+import { getTokenFromCookie, AUTH_TOKEN } from "../util/authentication.jsx";
 import { toast } from "react-toastify";
 
 axios.interceptors.response.use(null, error => {
