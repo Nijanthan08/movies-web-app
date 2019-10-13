@@ -26,12 +26,12 @@ export const getMovieInfo = async id => {
   return data.length ? data[0] : {};
 };
 
-export const addMovie = async (data, image) => {
+export const addMovie = async (data, image, user) => {
   const base64Img = await imageToBase64(image);
   data.genreId = parseInt(data.genreId);
   data.languageId = parseInt(data.languageId);
   data.base64Img = base64Img;
-  data.createdBy = 1;
+  data.createdBy = user ? user.id : null;
   data.active = "Y";
 
   return await httpPost("api/movies", data);

@@ -6,7 +6,10 @@ import { getGenres, getLanguages } from "../services/movies";
 import { isJsonObjEmpty } from "../util/utils";
 import { addMovie } from "./../services/movies";
 import { ALERT_MESSAGE_IMAGE } from "./../util/constants";
-import { getTokenFromCookie } from "./../util/authentication";
+import {
+  getTokenFromCookie,
+  decodeToken as isUserAuthenticated
+} from "./../util/authentication";
 
 class AddMovieComponent extends FormComponent {
   state = {
@@ -28,7 +31,7 @@ class AddMovieComponent extends FormComponent {
   };
 
   async componentDidMount() {
-    if (this.props.user && getTokenFromCookie()) {
+    if (isUserAuthenticated()) {
       this.props.toggleLoaderDisplay();
       const genres = await getGenres();
       const languages = await getLanguages();
@@ -42,11 +45,12 @@ class AddMovieComponent extends FormComponent {
   handleSubmit = async e => {
     e.preventDefault();
     const { data, image } = this.state;
+    const { user } = this.props;
     await this.validateInput(data, this.schema);
 
     if (isJsonObjEmpty(this.state.errors) && image.uploaded) {
       this.props.toggleLoaderDisplay();
-      const response = await addMovie(data, image.value);
+      const response = await addMovie(data, image.value, user);
       this.props.toggleLoaderDisplay();
       if (200 === response.status) this.props.history.push("/movies");
       else this.props.history.push("/login");
@@ -59,6 +63,7 @@ class AddMovieComponent extends FormComponent {
     e.preventDefault();
 
     const img = e.target.files[0];
+    console.log(img);
     if (!("image/jpeg" === img.type))
       this.updateImageState(false, ALERT_MESSAGE_IMAGE);
     else this.updateImageState(true, undefined, img);
