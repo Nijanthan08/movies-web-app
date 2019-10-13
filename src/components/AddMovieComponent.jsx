@@ -61,10 +61,9 @@ class AddMovieComponent extends FormComponent {
 
   handleImageValidation = e => {
     e.preventDefault();
-
     const img = e.target.files[0];
-    console.log(img);
-    if (!("image/jpeg" === img.type))
+
+    if (!("image/jpeg" === img.type) || 48000 < img.size)
       this.updateImageState(false, ALERT_MESSAGE_IMAGE);
     else this.updateImageState(true, undefined, img);
   };

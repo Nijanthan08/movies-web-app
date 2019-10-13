@@ -1,4 +1,5 @@
-export const ALERT_MESSAGE_IMAGE = "Upload an image in .jpeg format";
+export const ALERT_MESSAGE_IMAGE =
+  "Upload an image in .jpeg format of size less than 45 KB";
 
 export const moviesTableColumns = [
   {
